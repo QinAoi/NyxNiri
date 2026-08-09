@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+NIRI_DIR="${NIRI_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/niri}"
+MENU_WIDTH="${MENU_WIDTH:-90}"
+MENU_HEIGHT="${MENU_HEIGHT:-20}"
+SCRIPT_PATH="$(realpath "$0")"
+
+require_command() {
+    if ! command -v "$1" >/dev/null 2>&1; then
+        printf '错误：缺少命令 %s\n' "$1" >&2
+        exit 1
+    fi
+}
+
+collect_items() {
+    local items
+
+    if [[ ! -d "$NIRI_DIR" ]]; then
+        printf '错误：找不到 Niri 配置目录 %s\n' "$NIRI_DIR" >&2
+        exit 1
+    fi
+
+    items="$(
+        grep -Rh 'hotkey-overlay-title="' "$NIRI_DIR" --include='*.kdl' 2>/dev/null |
+            grep -v '^[[:space:]]*//' |
+            sed -nE 's/^[[:space:]]*([^[:space:]]+)[[:space:]]+hotkey-overlay-title="([^"]+)".*/\1|\2/p' |
+            column -t -s '|' || true
+    )"
+
+    if [[ -z "$items" ]]; then
+        printf '错误：没有找到带 hotkey-overlay-title 的快捷键\n' >&2
+        exit 1
+    fi
+
+    printf '%s\n' "$items"
+}
+
+show_menu() {
+    require_command fzf
+
+    collect_items |
+        fzf \
+            --reverse \
+            --prompt='快捷键 › ' \
+            --info=hidden \
+            --color='bg:-1,bg+:0,fg:8,fg+:7,hl:4,hl+:5,prompt:2,pointer:#f5c2e7,marker:5,header:8,border:0' \
+            --border=none \
+            >/dev/null || true
+}
+
+case "${1:-}" in
+    --menu)
+        show_menu
+        ;;
+    --print)
+        collect_items
+        ;;
+    "")
+        require_command kitty
+        exec kitty \
+            --class niri-hotkey-menu \
+            --title "快捷键菜单" \
+            -o remember_window_size=no \
+            -o "font_family=Noto Sans Mono CJK SC" \
+            -o font_size=13.0 \
+            -o "initial_window_width=${MENU_WIDTH}c" \
+            -o "initial_window_height=${MENU_HEIGHT}c" \
+            "$SCRIPT_PATH" --menu
+        ;;
+    *)
+        printf '用法：%s [--menu|--print]\n' "$0" >&2
+        exit 2
+        ;;
+esac

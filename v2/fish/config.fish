@@ -136,7 +136,7 @@ function nyxhelp --description "NyxNiri Cheatsheet速查手册"
             set_color -o blue; echo -n "     Mod + L                 "; set_color green; echo "-> 锁定屏幕 (Noctalia Lock)"; set_color normal
             set_color -o blue; echo -n "     Mod + Shift + S / Print "; set_color green; echo "-> 交互式区域截图"; set_color normal
             set_color -o blue; echo -n "     Mod + Shift + R         "; set_color green; echo "-> 重载 Niri 桌面配置"; set_color normal
-            set_color -o blue; echo -n "     Mod + Slash (/)        "; set_color green; echo "-> 显示 Niri 原生按键覆盖层"; set_color normal
+            set_color -o blue; echo -n "     Mod + Shift + Slash     "; set_color green; echo "-> 显示可搜索快捷键菜单"; set_color normal
             return
         case shell
             set_color -o magenta; echo "  [ 终端补全与 fzf ]"; set_color normal

@@ -170,13 +170,15 @@ NyxNiri
 | <kbd>Super</kbd> + <kbd>G</kbd> | Toggle Scratchpad terminal |
 | <kbd>Super</kbd> + <kbd>L</kbd> | Lock screen |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> | Screenshot |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>/</kbd> | Searchable hotkey menu |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> | Reload Niri |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> | Quit Niri |
 
 </details>
 
 > [!TIP]
-> Full reference: `nyxhelp keys`, or press <kbd>Super</kbd> + <kbd>/</kbd> in Niri.
+> Full reference: `nyxhelp keys`, or press <kbd>Super</kbd> +
+> <kbd>Shift</kbd> + <kbd>/</kbd> for the searchable Kitty + fzf menu.
 
 ## Optional Modules
 
@@ -417,13 +419,15 @@ NyxNiri
 | <kbd>Super</kbd> + <kbd>G</kbd> | 切换 Scratchpad 浮动终端 |
 | <kbd>Super</kbd> + <kbd>L</kbd> | 锁屏 |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> | 截图 |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>/</kbd> | 可搜索快捷键菜单 |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> | 重载 Niri |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> | 退出 Niri |
 
 </details>
 
 > [!TIP]
-> 完整参考：`nyxhelp keys`，或在 Niri 中按 <kbd>Super</kbd> + <kbd>/</kbd>。
+> 完整参考：`nyxhelp keys`，或按 <kbd>Super</kbd> + <kbd>Shift</kbd> +
+> <kbd>/</kbd> 打开可搜索的 Kitty + fzf 菜单。
 
 ## 可选模块
 

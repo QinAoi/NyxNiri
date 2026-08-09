@@ -10,85 +10,85 @@ binds {
     // 1. 会话与系统控制 / Session & System Controls
     // -------------------------------------------------------------------------
     // 切换概览视角 (禁止按键重复) / Toggle workspace overview (prevent key repeat)
-    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Tab hotkey-overlay-title="切换工作区总览" repeat=false { toggle-overview; }
 
     // 关闭当前获得焦点的窗口 / Close active focused window
-    Mod+Q { close-window; }
+    Mod+Q hotkey-overlay-title="关闭当前窗口" { close-window; }
 
     // 退出 Niri 桌面会话 / Quit Niri desktop session
-    Mod+Shift+E { quit; }
+    Mod+Shift+E hotkey-overlay-title="退出 Niri 会话" { quit; }
 
     // 重新加载 Niri 配置文件 / Reload Niri configuration file
-    Mod+Shift+R { spawn "niri" "msg" "action" "load-config-file"; }
+    Mod+Shift+R hotkey-overlay-title="重新加载 Niri 配置" { spawn "niri" "msg" "action" "load-config-file"; }
 
     // 锁定屏幕 (使用 Noctalia 原生锁屏) / Lock screen using Noctalia native lockscreen
-    Mod+L { spawn "noctalia" "msg" "session" "lock"; }
+    Mod+L hotkey-overlay-title="锁定屏幕" { spawn "noctalia" "msg" "session" "lock"; }
 
-    // 显示快捷键提示覆盖层 / Show interactive hotkey overlay
-    Mod+Slash { show-hotkey-overlay; }
+    // 显示 Kitty + fzf 快捷键菜单 / Show Kitty + fzf hotkey menu
+    Mod+Shift+Slash hotkey-overlay-title="显示快捷键菜单" { spawn "~/.config/niri/scripts/niri-binds"; }
 
     // -------------------------------------------------------------------------
     // 2. 应用启动与 Noctalia 组件 / App Launchers & Noctalia Panels
     // -------------------------------------------------------------------------
     // 启动终端模拟器 (Kitty) / Launch terminal emulator (Kitty)
-    Mod+Return { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="启动终端" { spawn "kitty"; }
 
     // 启动文件管理器 (Nautilus) / Launch file manager (Nautilus)
-    Mod+E { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="启动文件管理器" { spawn "nautilus"; }
 
     // 切换 Noctalia 应用启动器 / Toggle Noctalia application launcher
-    Mod+R { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+R hotkey-overlay-title="打开应用启动器" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
     // 切换 Noctalia 电源/会话菜单 / Toggle Noctalia power/session menu
-    Mod+X { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+X hotkey-overlay-title="打开电源与会话菜单" { spawn "noctalia" "msg" "panel-toggle" "session"; }
 
     // 切换 Noctalia 系统设置面板 / Toggle Noctalia system settings panel
-    Mod+I { spawn "noctalia" "msg" "settings-toggle"; }
+    Mod+I hotkey-overlay-title="打开系统设置" { spawn "noctalia" "msg" "settings-toggle"; }
 
     // 切换 Noctalia 剪贴板历史 / Toggle Noctalia clipboard history panel
-    Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+    Mod+V hotkey-overlay-title="打开剪贴板历史" { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 
     // 切换 Noctalia 静态壁纸选择器 / Toggle Noctalia wallpaper picker
-    Mod+W { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
+    Mod+W hotkey-overlay-title="选择静态壁纸" { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
 
     // 切换 Noctalia 动态壁纸选择器 (mpvpaper) / Toggle Noctalia live wallpaper picker (mpvpaper)
-    Mod+Shift+W { spawn "noctalia" "msg" "panel-toggle" "noctalia/mpvpaper:picker"; }
+    Mod+Shift+W hotkey-overlay-title="选择动态壁纸" { spawn "noctalia" "msg" "panel-toggle" "noctalia/mpvpaper:picker"; }
 
     // 切换护眼模式 (调暖色温并关闭透明度/毛玻璃) / Toggle eye-care mode (warmer temp & disable blur/transparency)
-    Mod+N { spawn "~/.config/niri/toggle-eyecare.sh"; }
-    Mod+G { spawn "~/.config/niri/niri-scratch-toggle.sh"; }
+    Mod+N hotkey-overlay-title="切换护眼模式" { spawn "~/.config/niri/toggle-eyecare.sh"; }
+    Mod+G hotkey-overlay-title="切换 Scratchpad 终端" { spawn "~/.config/niri/niri-scratch-toggle.sh"; }
 
     // -------------------------------------------------------------------------
     // 3. 焦点导航与窗口移动 / Focus Navigation & Window Movement
     // -------------------------------------------------------------------------
     // 智能焦点导航 (达到边缘时自动穿透跨屏与跨工作区) / Smart focus (auto cross monitor & workspace)
-    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Left hotkey-overlay-title="智能切换焦点（方向键）" { focus-column-or-monitor-left; }
     Mod+Right { focus-column-or-monitor-right; }
     Mod+Down  { focus-window-or-workspace-down; }
     Mod+Up    { focus-window-or-workspace-up; }
 
     // 左手单手焦点控制 / One-handed Left-hand Focus Controls
-    Mod+Z { focus-column-left; }
+    Mod+Z hotkey-overlay-title="向左切换焦点（Z/C）" { focus-column-left; }
     Mod+C { focus-column-right; }
-    Mod+J { focus-window-down; }
+    Mod+J hotkey-overlay-title="上下切换窗口（J/K）" { focus-window-down; }
     Mod+K { focus-window-up; }
 
     // 智能窗口/列搬运 (推至边缘时自动搬运至相邻显示器或工作区) / Smart movement (auto move to monitor & workspace)
-    Mod+Ctrl+Left  { move-column-left-or-to-monitor-left; }
+    Mod+Ctrl+Left hotkey-overlay-title="智能移动窗口（Ctrl+方向键）" { move-column-left-or-to-monitor-left; }
     Mod+Ctrl+Right { move-column-right-or-to-monitor-right; }
     Mod+Ctrl+Down  { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+Up    { move-window-up-or-to-workspace-up; }
 
     // Shift 辅助精准移动 / Movement with Shift modifier
-    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Left hotkey-overlay-title="精确移动列（Shift+左右）" { move-column-left; }
     Mod+Shift+Right { move-column-right; }
 
     // 工作区方向导航 / Workspace Navigation
-    Mod+D { focus-workspace-down; }
+    Mod+D hotkey-overlay-title="切换工作区（D/U）" { focus-workspace-down; }
     Mod+U { focus-workspace-up; }
 
     // 显示器精准导航与搬运 / Precision Multi-Monitor Navigation
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Left hotkey-overlay-title="跨显示器移动列（Shift+Ctrl+方向键）" { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
@@ -97,33 +97,33 @@ binds {
     // 4. 窗口布局与尺寸调整 / Window Layout & Sizing
     // -------------------------------------------------------------------------
     // 切换当前窗口的浮动/平铺状态 / Toggle window floating state
-    Mod+T { toggle-window-floating; }
+    Mod+T hotkey-overlay-title="切换浮动与平铺" { toggle-window-floating; }
 
     // 最大化当前列宽度 / Maximize column width
-    Mod+F { maximize-column; }
+    Mod+F hotkey-overlay-title="最大化当前列" { maximize-column; }
 
     // 全屏显示当前窗口 / Fullscreen focused window
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+F hotkey-overlay-title="全屏当前窗口" { fullscreen-window; }
 
     // 循环切换预设列宽比例 / Switch preset column widths
-    Mod+Space { switch-preset-column-width; }
+    Mod+Space hotkey-overlay-title="切换预设列宽" { switch-preset-column-width; }
 
     // 微调列宽与高度重置 / Fine-tune column width & reset height
-    Mod+Minus { set-column-width "-5%"; }
+    Mod+Minus hotkey-overlay-title="调整列宽（-/+）" { set-column-width "-5%"; }
     Mod+Equal { set-column-width "+5%"; }
-    Mod+Shift+Equal { reset-window-height; }
+    Mod+Shift+Equal hotkey-overlay-title="重置窗口高度" { reset-window-height; }
 
     // 将相邻窗口合并入当前列 / Consume adjacent window into current column
-    Mod+Comma { consume-window-into-column; }
+    Mod+Comma hotkey-overlay-title="合并窗口到当前列" { consume-window-into-column; }
 
     // 将当前窗口从列中分离吐出 / Expel window from current column
-    Mod+Period { expel-window-from-column; }
+    Mod+Period hotkey-overlay-title="从当前列分离窗口" { expel-window-from-column; }
 
     // -------------------------------------------------------------------------
     // 5. 工作区管理 (1-9) / Workspace Management (1-9)
     // -------------------------------------------------------------------------
     // 切换至指定编号工作区 / Switch to workspace by index
-    Mod+1 { focus-workspace 1; }
+    Mod+1 hotkey-overlay-title="切换工作区（1–9）" { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
     Mod+4 { focus-workspace 4; }
@@ -134,7 +134,7 @@ binds {
     Mod+9 { focus-workspace 9; }
 
     // 将当前列移动至指定编号工作区 / Move focused column to workspace by index
-    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+1 hotkey-overlay-title="移动列到工作区（Shift+1–9）" { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
     Mod+Shift+4 { move-column-to-workspace 4; }
@@ -148,21 +148,21 @@ binds {
     // 6. 鼠标与滚轮绑定 / Mouse & Wheel Binds
     // -------------------------------------------------------------------------
     // 滚轮上下滚动切换工作区 (带 150ms 冷却防误触) / Scroll wheel up/down to switch workspace (150ms cooldown)
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollDown hotkey-overlay-title="滚轮切换工作区" cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
 
     // Ctrl+滚轮上下滚动携带当前列切换工作区 / Ctrl+Scroll wheel up/down to move column between workspaces
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollDown hotkey-overlay-title="滚轮移动列到工作区" cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
     // 滚轮左右/Shift+滚轮切换列焦点 / Scroll wheel left/right or Shift+wheel to switch column focus
-    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollRight hotkey-overlay-title="横向滚轮切换列焦点" { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
     Mod+Shift+WheelScrollDown { focus-column-right; }
     Mod+Shift+WheelScrollUp   { focus-column-left; }
 
     // Ctrl+滚轮左右/Ctrl+Shift+滚轮移动当前列 / Ctrl+wheel or Ctrl+Shift+wheel to move column left/right
-    Mod+Ctrl+WheelScrollRight      { move-column-right; }
+    Mod+Ctrl+WheelScrollRight hotkey-overlay-title="横向滚轮移动列" { move-column-right; }
     Mod+Ctrl+WheelScrollLeft       { move-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
@@ -171,24 +171,24 @@ binds {
     // 7. 多媒体与硬件控制 / Multimedia & Hardware Control
     // -------------------------------------------------------------------------
     // 音量加 / 减 / 静音 (WirePlumber) / Volume Up / Down / Mute via WirePlumber
-    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
-    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
-    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioRaiseVolume hotkey-overlay-title="提高音量" { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume hotkey-overlay-title="降低音量" { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute hotkey-overlay-title="切换静音" { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 
     // 外接显示器硬件亮度调节 (ddcutil, 允许锁屏状态下生效) / DDC monitor brightness control (allow when locked)
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "sh" "-c" "ddcutil setvcp 10 + 10"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "ddcutil setvcp 10 - 10"; }
+    XF86MonBrightnessUp hotkey-overlay-title="提高显示器亮度" allow-when-locked=true { spawn "sh" "-c" "ddcutil setvcp 10 + 10"; }
+    XF86MonBrightnessDown hotkey-overlay-title="降低显示器亮度" allow-when-locked=true { spawn "sh" "-c" "ddcutil setvcp 10 - 10"; }
 
     // -------------------------------------------------------------------------
     // 8. 截图按键控制 / Screenshot Controls
     // -------------------------------------------------------------------------
     // 交互式区域截图 / Interactive region screenshot
-    Mod+Shift+S { screenshot; }
+    Mod+Shift+S hotkey-overlay-title="交互式区域截图" { screenshot; }
     Print       { screenshot; }
 
     // 截取整个显示器屏幕 / Fullscreen screenshot
-    Ctrl+Print  { screenshot-screen; }
+    Ctrl+Print hotkey-overlay-title="截取整个显示器" { screenshot-screen; }
 
     // 截取当前活动窗口 / Active window screenshot
-    Alt+Print   { screenshot-window; }
+    Alt+Print hotkey-overlay-title="截取当前窗口" { screenshot-window; }
 }
